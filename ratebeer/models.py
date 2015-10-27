@@ -171,16 +171,9 @@ class Beer(object):
 
         # get ratings
         ratings = info[0].findAll('div')
-        if len(ratings) > 1:
-            overall_rating = ratings[1].findAll('span')
-            style_rating = ratings[3].findAll('span')
-        else:
-            overall_rating = None
-            style_rating = None
-        if overall_rating and overall_rating[1].text != 'n/a':
-            self.overall_rating = int(overall_rating[1].text)
-        if style_rating and style_rating[0].text != 'n/a':
-            self.style_rating = int(style_rating[0].text)
+        if len(ratings) > 3:
+            self.overall_rating = ratings[1].contents[2]
+            self.style_rating = ratings[3].contents[0]
 
         # get the beer style
         if brewery_info[3]:
