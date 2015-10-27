@@ -9,7 +9,7 @@ def main(host, port):
     rb = ratebeer.RateBeer()
     app = Flask(__name__)
     setupFlask(app, rb)
-    app.run(host="127.0.0.1", port=port)
+    app.run(host=host, port=port)
 
 
 def setupFlask(app, rb):
@@ -51,4 +51,4 @@ if __name__ == "__main__":
 
     (options, args) = parser.parse_args()
 
-    main(options.host, options.port)
+    main(options.host, int(options.port))
